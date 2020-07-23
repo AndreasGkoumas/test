@@ -26,9 +26,11 @@
             <div id="app2">
                 <input type="text" v-model="name">
                 <p>{{ name }}</p>
-                <button v-on:click="Click">do it</button>
-                <p>{{ counter }}</p>
-                <p>{{ Result }}</p>
+                <button v-on:click="counter++">up +1</button>
+                <button v-on:click="counter--">down -1</button><br>
+                <button v-on:click="secCounter++">do it</button>
+                <p>{{ counter }} \|/ {{secCounter}}</p>
+                <p>{{ Result }}  \|/ {{ output }}</p>
             </div>
         </div>
     </body>

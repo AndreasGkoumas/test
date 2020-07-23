@@ -35,11 +35,17 @@ new Vue({
     data:{
         name: 'YOU',
         counter:0 ,
+        secCounter: 0,
         Result: 'YAY'
+
+    },
+    computed:{
+        output: function(){
+            this.Result= this.counter > 10 ? 'DIE' : 'LIVE'
+        }
     },
     methods:{
         Click: function(){
-            this.counter++ ;
             this.Result= this.counter > 10 ? 'DIE' : 'LIVE'
         }
     }
