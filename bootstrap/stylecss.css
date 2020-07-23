@@ -1,0 +1,45 @@
+html,
+body{
+    height:100%;
+}
+
+#cover{
+    background: #222 url('imgs/walk.jpg') no-repeat;
+    background-size: cover;
+    color:beige;
+    -webkit-text-stroke: black 1px;
+    font-size: large;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+#cover-caption{
+    width: 100%;
+}
+.section-content{
+    padding: 2rem 0;
+}
+#cards img{
+    max-width: 100%;
+    height: 500px;
+    width: 800px;
+
+}
+#about{
+    background: url('imgs/all.jpg') center center no-repeat;
+    background-size: cover;
+}
+.about-text{
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 2rem;
+}
+
+#foot{
+    background: black;
+    color: wheat;
+    padding: 2rem;
+    font-size: 0.5rem,;
+}
