@@ -1,2 +1,2 @@
-TextDecoderStream
-ok 
+//full test
+print ("Hello")
