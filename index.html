@@ -2,9 +2,37 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie-edge">
     </head>
-    <body>
-        <p>Not hello</p>
-        <h4>Hello</h4>
+    <body style="display: flex;">
+        <div style="width: 50%; background: lightblue;">
+                <div id="app">
+                    <h3 v-once>{{ title }}</h3>
+                    <h4>{{ title }}</h4>
+                    <p v-once>{{ thing }}</p>
+                    <p v-html="html"></p>
+                    <p >{{ Saysomething() }}</p>            
+                    <input type="text" v-on:input="ChangeT"><br>
+                    <a v-bind:href="link">Test</a><br>
+                    <button v-on:click="Click(5)">Don't do it</button>
+                    <p>{{ counter }}</p><br>
+                    <button v-on:click="counter*3">do it</button>
+                    <p>{{ counter /10 < 10 ? 'no' : 'yes' }}</p>
+                    <p v-on:mousemove="updatemouse">{{ x }} -- {{ y }} &nbsp; <span v-on:mousemove.stop="">???DEATH!!!</span></p>
+                    <input type="text" v-on:keyup.space="Alertyou">
+                </div>
+        </div>
+        <div style="flex: 1;background: lightgray;">
+            <div id="app2">
+                <input type="text" v-model="name">
+                <p>{{ name }}</p>
+                <button v-on:click="Click">do it</button>
+                <p>{{ counter }}</p>
+                <p>{{ Result }}</p>
+            </div>
+        </div>
     </body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="index.js"></script>
 </html>
