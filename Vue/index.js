@@ -10,6 +10,14 @@ new Vue({
         x: 0,
         y: 0
     },
+    watch:{
+        counter : function(value){
+            vm=this;
+            setTimeout(function(){
+                vm.counter=0;
+            },5000)
+        }
+    },
     methods: {
             ChangeT: function(event){
                 this.title=event.target.value; 
@@ -36,13 +44,48 @@ new Vue({
         name: 'YOU',
         counter:0 ,
         secCounter: 0,
-        Result: 'YAY'
-
+        Result: 'YAY',
+        clickRed: false,
+        clickGreen: false,
+        clickBlue: false,
+        color: 'demo',
+        width : 100 
     },
     computed:{
         output: function(){
             this.Result= this.counter > 10 ? 'DIE' : 'LIVE'
+        },
+        RBclass:function(){
+            return {
+                red : this.clickRed,
+                blue : !this.clickRed,
+            }
+        },
+        GRclass:function(){
+            return {
+                green : this.clickGreen,
+                red : !this.clickGreen,
+            }
+        },
+        BGclass:function(){
+            return {
+                blue : this.clickBlue,
+                green : !this.clickBlue,
+            }
+        },
+        Mystyle: function(){
+            return{ 
+                background:this.color,
+                width:this.width + 'px',
+                height:this.width + 'px'
+            }
         }
+    },
+    watch:{
+        secCounter: function(value){
+            vm=this;
+            alert(vm.secCounter);
+        }        
     },
     methods:{
         Click: function(){
