@@ -1,0 +1,29 @@
+html,
+body{  
+    width: cover;
+    text-align: center;
+}
+.spaces{
+    margin-top: 25px;
+    margin-bottom: 10px;
+
+    align-items: center;
+}
+.big{
+    display: flex;
+
+}
+
+.bar{
+    background: black;
+    width: 300px;
+    height: 30px;
+    color: white;
+}
+#controls{  
+    text-align: justify center;
+    margin-left: 10%;
+    padding: 10px;
+    box-shadow: 0px 3px 6px lightgray; 
+    width: 80%;
+}

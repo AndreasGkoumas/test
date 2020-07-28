@@ -6,49 +6,87 @@
         <link rel="stylesheet" href="style.css"> </link>
     </head>
     <body> 
-            <div class="right"">
-                    <div id="app">
-                        <h3 v-once>{{ title }}</h3>
-                        <h4>{{ title }}</h4>
-                        <p v-once>{{ thing }}</p>
-                        <p v-html="html"></p>
-                        <p >{{ Saysomething() }}</p>            
-                        <input type="text" @input="ChangeT"><br>
-                        <hr>
-                        <a :href="link">Test</a><br>
-                        <button @click="Click(5)">Don't do it</button>
-                        <p>{{ counter }}</p><br>
-                        <button @click="counter*=3">do it</button>
-                        <p>{{ counter /10 < 10 ? 'no' : 'yes' }}</p>
-                        <hr>
-                        <p @mousemove="updatemouse">{{ x }} -- {{ y }} &nbsp; <span @mousemove.stop="">???DEATH!!!</span></p>
-                        <hr>
-                        <input type="text" @keyup.space="Alertyou">
-                    </div>
+        <div class="right"">
+            <div id="app">
+                <h3 v-once>{{ title }}</h3>
+                <h4>{{ title }}</h4>
+                <p v-once>{{ thing }}</p>
+                <p v-html="html"></p>
+                <p >{{ Saysomething() }}</p>            
+                <input type="text" @input="ChangeT"><br>
+                <hr>
+                <a :href="link">Test</a><br>
+                <button @click="Click(5)">Don't do it</button>
+                <p>{{ counter }}</p><br>
+                <button @click="counter*=3">do it</button>
+                <p>{{ counter /10 < 10 ? 'no' : 'yes' }}</p>
+                <hr>
+                <p @mousemove="updatemouse">{{ x }} -- {{ y }} &nbsp; <span @mousemove.stop="">???DEATH!!!</span></p>
+                <hr>
+                <input type="text" @keyup.space="Alertyou">
             </div>
-            <div class="left"">
-                <div id="app2">
-                    <input type="text" v-model="name">
-                    <p>{{ name }}</p>
-                    <hr>
-                    <button @click="counter++">up +1</button>
-                    <button @click="counter--">down -1</button><br>
-                    <button @click="secCounter++">do it</button>
-                    <p>{{ counter }} \|/ {{secCounter}}</p>
-                    <p>{{ Result }}  \|/ {{ output }}</p>
-                    <hr>
-                    <p>Playing with css</p>
-                    <div class="demo" @click="clickRed = !clickRed" :class="RBclass"></div>
-                    <div class="demo" @click="clickGreen = !clickGreen" :class="GRclass" ></div>
-                    <div class="demo" @click="clickBlue = !clickBlue" :class="BGclass"></div>
-                    <div class="demo"  :style="Mystyle"></div>
-                    <hr>
-                    <input type="text" v-model="color">
-                    <input type="text" v-model="width">
-                </div>
+        </div>
+        <div class="left"">
+            <div id="app2">
+                <input type="text" v-model="name">
+                <p>{{ name }}</p>
+                <hr>
+                <button @click="counter++">up +1</button>
+                <button @click="counter--">down -1</button><br>
+                <button @click="secCounter++">do it</button>
+                <p>{{ counter }} \|/ {{secCounter}}</p>
+                <p>{{ Result }}  \|/ {{ output }}</p>
+                <hr>
+                <p>Playing with css</p>
+                <div class="demo" @click="clickRed = !clickRed" :class="RBclass"></div>
+                <div class="demo" @click="clickGreen = !clickGreen" :class="GRclass" ></div>
+                <div class="demo" @click="clickBlue = !clickBlue" :class="BGclass"></div>
+                <div class="demo"  :style="Mystyle"></div>
+                <hr>
+                <input type="text" v-model="color">
+                <input type="text" v-model="width">
             </div>
+        </div>
+        <div class="edge" id="app3">
+            <p v-if="show">YES</p>
+            <p v-else>NO</p>
+            <button @click="show = !show">Press</button>
+            <hr>
+            <template>
+                <!-- v-show is same as v-if but it hides the element ,not remove it-->
+                <p v-if="tshow">YES</p>
+                <p v-else>NO</p>
+                <button @click="tshow = !tshow">Press</button>
+            </template>
+            <hr>
+            <div>
+                <ul>
+                    <li v-for="(meal,index) in food">{{ meal }} -- [{{ index }}]</li>
+                </ul>
+                <input type="text" v-model="newf" @keyup.enter="food.push(newf)">
+                <button @click="food.push(newf)">Add new food</button>
+                <br>
+                <ol>
+                    <li v-for="one in friends">{{ one.name }}-{{one.money}}->{{ one.age }}</li>
+                </ol>
+                <hr>
+                <table style="border: 1px solid red;">
+                    <tr v-for="one in friends">
+                        <td v-for="(value,key) in one" style="border: 1px solid red;">{{  key }}:{{ value }}</td>
+                    </tr>
+                </table>     <br>            
+                <span v-for="n in 20" style="text-decoration: underline;">{{ n }}-</span>
+                <hr>
+                <template v-for="(meal,index) in food">
+                    <H2>{{ index }}</H2>
+                    <p>{{ meal }}</p>
+                
+                </template>
+            </div>    
+        </div>
     </body>
+
     
-    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue/dist/vue.js"></script>
     <script src="index.js"></script>
 </html>

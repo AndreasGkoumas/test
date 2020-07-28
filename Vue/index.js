@@ -93,3 +93,17 @@ new Vue({
         }
     }
 });
+new Vue({
+    el : '#app3',
+    data:{
+        show : true ,
+        tshow : false,
+        newf:'',
+        food: ['orange','chicken','pork','potatoes'],
+        friends:[
+            {name:'John',age:'24',money:'2000'},
+            {name:'Nick',age:'23',money:'20000'},
+            {name:'Chris',age:'25',money:'200'}
+        ]
+    }
+});

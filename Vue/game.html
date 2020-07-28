@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie-edge">
+        <link   rel="stylesheet" href="../bootstrap-4.5.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="game.css"> </link>
+    </head>
+
+    <body >
+        <div id="game">
+            <section class="row">            
+                <div class="col-sm-6 spaces">
+                    <h1 class="text-center">YOU</h1>
+                    <label for="myhealth"> {{ yhp }} </label><br>
+                    <progress id="myhealth" max="100" :value="yhp" class="bar" :class="death"></progress>
+                </div>
+                <div class="col-sm-6 spaces">
+                    <h1 class="text-center">MONSTER</h1>
+                    <label for="monsterhealth" > {{ mhp }} </label><br>
+                    <progress id="monsterhealth" max="100" :value="mhp" class="bar" :class="win"></progress>
+                </div>           
+            </section>
+
+            <section class="row" id="controls"  v-if="show">
+                <div class="container">
+                    <div class="col-sm-12 spaces " >
+                        <button @click="start" class="btn btn-success btn-lg">START GAME</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="row" id="controls"  v-if="showcon">
+                <div class="container">
+                    <div class="col-sm-12 spaces" > 
+                        <button @click="attack"class="btn btn-warning btn-lg">ATTACK</button>
+                        <button v-if="turns>=2" @click="spattack"class="btn btn-danger btn-lg">SPECIAL ATTACK</button>
+                        <button v-else class="btn btn-danger btn-lg" disabled>SPECIAL ATTACK</button>
+                        <button v-if="yhp >= 100" @click="heal"class="btn btn-success btn-lg" disabled>HEAL</button>
+                        <button v-else @click="heal"class="btn btn-success btn-lg">HEAL</button>
+                        <button @click="retreat"class="btn btn-outline-dark btn-lg">GIVE UP</button>
+                    </div>    
+                </div>
+            </section>
+            <section class="row">
+                <div class="container"  v-if="showlog">
+                    <div class="col-sm-12 spaces" id="controls">
+                        <h1 v-if="ycritflag" style="font-size:20px; color:red; ">YOU DID THIS {{ ydmg }} DAMAGE WITH A CRITICAL!!</h1>
+                        <h1 v-else-if="yfailflag" style="font-size:20px; color:red; ">YOU MISSED!!</h1>
+                        <h1 v-else style="font-size:20px; color:red; ">YOU DID THIS {{ ydmg }} DAMAGE</h1>
+                        <h1 v-if="mcritflag" style="font-size:20px; color:blue; ">YOU TOOK THIS {{ mdmg }} DAMAGE WITH A CRITICAL!!</h1>
+                        <h1 v-else-if="mfailflag" style="font-size:20px; color:blue; ">THE MONSTER MISSED!!</h1>
+                        <h1 v-else style="font-size:20px; color:blue; ">YOU TOOK THIS {{ mdmg }} DAMAGE</h1>
+                    </div>
+                </div>
+            </section>
+        </div>    
+    </body>
+
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="game.js"></script>
+</html>
